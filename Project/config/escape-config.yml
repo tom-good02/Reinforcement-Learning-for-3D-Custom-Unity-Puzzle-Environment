@@ -1,0 +1,85 @@
+behaviors:
+  Escape:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 10240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.3
+      lambd: 0.95
+      num_epoch: 4
+      shared_critic: False
+      learning_rate_schedule: constant
+      beta_schedule: constant
+      epsilon_schedule: constant
+    network_settings:
+      normalize: False
+      hidden_units: 128
+      num_layers: 3
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+      deterministic: False
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+      # curiosity:
+      #   strength: 0.05
+      #   gamma: 0.99
+    keep_checkpoints: 20
+    checkpoint_interval: 250000
+    max_steps: 3500000
+    time_horizon: 128
+    summary_freq: 10000
+
+environment_parameters:
+  room_number:
+    curriculum:
+      - name: Room1
+        completion_criteria:
+          measure: reward
+          behavior: Escape
+          signal_smoothing: true
+          min_lesson_length: 50
+          threshold: 2
+          require_reset: true
+        value: 0
+      - name: Room2
+        completion_criteria:
+          measure: reward
+          behavior: Escape
+          signal_smoothing: true
+          min_lesson_length: 50
+          threshold: 3
+          require_reset: true
+        value: 1
+      - name: Room3
+        completion_criteria:
+          measure: reward
+          behavior: Escape
+          signal_smoothing: true
+          min_lesson_length: 50
+          threshold: 4
+          require_reset: true
+        value: 2
+      - name: Room4
+        completion_criteria:
+          measure: reward
+          behavior: Escape
+          signal_smoothing: true
+          min_lesson_length: 50
+          threshold: 4
+          require_reset: true
+        value: 3
+      - name: Room5
+        completion_criteria:
+          measure: reward
+          behavior: Escape
+          signal_smoothing: true
+          min_lesson_length: 50
+          threshold: 4
+          require_reset: true
+        value: 4
+      - name: Room6
+        value: 5

@@ -1,0 +1,5 @@
+# Reinforcement Learning for 3D Custom Unity Puzzle Environment
+
+Built in Unity, this project provides utilises [ML-Agents](https://github.com/Unity-Technologies/ml-agents), a Unity toolkit, to train Reinforcement Learning Agents in a custom built, escape room based environment inspired by YouTube videos by [AI Warehouse](https://www.youtube.com/@aiwarehouse).
+
+The purpose of this project was to investigate how an Agent behaved with varying numbers of sensors. It assessed how well Proximal Policy Optimization (a Reinforcement Learning technique) could be used to train the Agent to navigate a series of rooms. The project also examined if the Agent could transfer these learned behaviors between rooms. To make learning more efficient, a method called curriculum learning was used. Additionally, the project explored whether adding an intrinsic reward, in the form of Curiosity, would influence the Agent's learning process. A demo video of the taught Agent escaping the series of rooms can be seen [here](https://www.youtube.com/watch?v=pomCgEkFqMY).
